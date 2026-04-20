@@ -21,43 +21,82 @@
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⠋⠀⠀⠀⠀⠀⠀⠀⣠⣴⡿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣇⠀⠀⠀⠀⠀⣀⣴⣾⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣷⣦⣴⣶⡿⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                           
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
+# Neovim Config
+
+Минимальный  конфиг на базе `AstroNvim` для разработки на `C/C++` и `Python`.
 
 </div>
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                               
+
+## Что здесь есть
+
+- Светлая тема `everforest`, вариант `light medium`.
+- `LSP` для `clangd`, `pyright`, `cmake-language-server`.
+- Форматирование и линтинг для `C/C++` и `Python`.
+- Дебаг для `Python` и `C/C++`.
+- Базовые парсеры `Treesitter` для кода, `CMake`, `bash`, `json`, `yaml`, `markdown`.
+
+## Тема
+
+В конфиге используется `everforest` в таком варианте:
+
+- стиль: `light`
+- фон: `medium`
+- контраст интерфейса: `medium`
+
+Настройка темы находится в `lua/plugins/astroui.lua`.
+
+- `clangd`
+- `cmake-language-server`
+- `pyright`
+- `black`
+- `isort`
+- `ruff`
+- `clang-format`
+- `debugpy`
+- `codelldb`
+- `lua-language-server`
+- `stylua`
 
 
-# AstroNvim Template
+## Внешние зависимости
 
-**NOTE:** This is for AstroNvim v5+
+- `git`
+- `neovim` версии `0.10+`
+- `ripgrep`
+- `gcc` или `clang`
+- `python3`
+- `pip` или системный пакетный менеджер Python
+- `cmake`
+- `gdb` или `lldb`
 
-A template for getting started with [AstroNvim](https://github.com/AstroNvim/AstroNvim)
+## Установка
 
-## 🛠️ Installation
+Резервная копия:
 
-#### Make a backup of your current nvim and shared folder
-
-```shell
+```bash
 mv ~/.config/nvim ~/.config/nvim.bak
 mv ~/.local/share/nvim ~/.local/share/nvim.bak
 mv ~/.local/state/nvim ~/.local/state/nvim.bak
 mv ~/.cache/nvim ~/.cache/nvim.bak
 ```
 
-#### Create a new user repository from this template
+Склонировать конфиг:
 
-Press the "Use this template" button above to create a new repository to store your user configuration.
-
-You can also just clone this repository directly if you do not want to track your user configuration in GitHub.
-
-#### Clone the repository
-
-```shell
-git clone https://github.com/Mitlyy/new_nvim/ ~/.config/nvim
+```bash
+git clone https://github.com/Mitlyy/new_nvim ~/.config/nvim
 ```
 
-#### Start Neovim
 
-```shell
-nvim
-```
+## Структура
+
+- `init.lua`: точка входа
+- `lua/lazy_setup.lua`: загрузка `lazy.nvim` и `AstroNvim`
+- `lua/plugins/astroui.lua`: тема и UI
+- `lua/plugins/astrolsp.lua`: `LSP`
+- `lua/plugins/mason.lua`: список устанавливаемых инструментов
+- `lua/plugins/none-ls.lua`: форматирование и линтинг
+- `lua/plugins/dap.lua`: конфигурация дебага
+- `lua/plugins/treesitter.lua`: парсеры синтаксиса
+- `lua/plugins/astrocore.lua`: базовые опции и хоткеи

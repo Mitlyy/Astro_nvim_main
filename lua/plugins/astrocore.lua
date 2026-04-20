@@ -1,5 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
@@ -24,24 +22,15 @@ return {
       virtual_text = true,
       underline = true,
     },
-    -- passed to `vim.filetype.add`
-    filetypes = {
-      -- see `:h vim.filetype.add` for usage
-      extension = {
-        foo = "fooscript",
-      },
-      filename = {
-        [".foorc"] = "fooscript",
-      },
-      pattern = {
-        [".*/etc/foo/.*"] = "fooscript",
-      },
-    },
     -- vim options can be configured here
     options = {
       opt = { -- vim.opt.<key>
         relativenumber = true, -- sets vim.opt.relativenumber
         number = true, -- sets vim.opt.number
+        cursorline = true,
+        expandtab = true,
+        shiftwidth = 4,
+        tabstop = 4,
         spell = false, -- sets vim.opt.spell
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
         wrap = false, -- sets vim.opt.wrap
@@ -79,6 +68,12 @@ return {
 
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
+        ["<F5>"] = { function() require("dap").continue() end, desc = "Debug: Start/Continue" },
+        ["<F10>"] = { function() require("dap").step_over() end, desc = "Debug: Step over" },
+        ["<F11>"] = { function() require("dap").step_into() end, desc = "Debug: Step into" },
+        ["<F12>"] = { function() require("dap").step_out() end, desc = "Debug: Step out" },
+        ["<Leader>db"] = { function() require("dap").toggle_breakpoint() end, desc = "Debug: Breakpoint" },
+        ["<Leader>du"] = { function() require("dapui").toggle() end, desc = "Debug: UI" },
       },
     },
   },

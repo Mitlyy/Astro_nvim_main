@@ -5,33 +5,35 @@
 
 ---@type LazySpec
 return {
-  "AstroNvim/astroui",
-  ---@type AstroUIOpts
-  opts = {
-    -- change colorscheme
-    colorscheme = "gruvbox-material",
-    -- AstroUI allows you to easily modify highlight groups easily for any and all colorschemes
-    highlights = {
-      init = { -- this table overrides highlights in all themes
-        -- Normal = { bg = "#000000" },
+  {
+    "sainnhe/everforest",
+    lazy = false,
+    priority = 1000,
+    init = function()
+      vim.o.background = "light"
+      vim.g.everforest_background = "medium"
+      vim.g.everforest_better_performance = 0
+      vim.g.everforest_enable_italic = 1
+      vim.g.everforest_ui_contrast = "medium"
+    end,
+  },
+  {
+    "AstroNvim/astroui",
+    ---@type AstroUIOpts
+    opts = {
+      colorscheme = "everforest",
+      icons = {
+        LSPLoading1 = "⠋",
+        LSPLoading2 = "⠙",
+        LSPLoading3 = "⠹",
+        LSPLoading4 = "⠸",
+        LSPLoading5 = "⠼",
+        LSPLoading6 = "⠴",
+        LSPLoading7 = "⠦",
+        LSPLoading8 = "⠧",
+        LSPLoading9 = "⠇",
+        LSPLoading10 = "⠏",
       },
-      astrodark = { -- a table of overrides/changes when applying the astrotheme theme
-        -- Normal = { bg = "#000000" },
-      },
-    },
-    -- Icons can be configured throughout the interface
-    icons = {
-      -- configure the loading of the lsp in the status line
-      LSPLoading1 = "⠋",
-      LSPLoading2 = "⠙",
-      LSPLoading3 = "⠹",
-      LSPLoading4 = "⠸",
-      LSPLoading5 = "⠼",
-      LSPLoading6 = "⠴",
-      LSPLoading7 = "⠦",
-      LSPLoading8 = "⠧",
-      LSPLoading9 = "⠇",
-      LSPLoading10 = "⠏",
     },
   },
 }
