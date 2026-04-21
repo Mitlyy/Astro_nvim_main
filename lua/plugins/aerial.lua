@@ -5,6 +5,7 @@ return {
     local backends = opts.backends
 
     if vim.islist(backends) then
+      backends = vim.tbl_filter(function(backend) return backend ~= "treesitter" end, backends)
       backends = { _ = backends }
     else
       backends = vim.deepcopy(backends or {})
